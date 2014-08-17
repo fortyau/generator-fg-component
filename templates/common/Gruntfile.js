@@ -25,6 +25,77 @@ module.exports = function (grunt) {
       dist: 'dist'
     },
 
+    ngconstant: {
+      // Options for all targets
+      options: {
+        space: '  ',
+        wrap: '"use strict";\n\n {%= __ngModule %}',
+        name: 'config'
+      },
+      // Environment targets
+      development: {
+        options: {
+          dest: '<%= yeoman.app %>/scripts/config.js'
+        },
+        constants: {
+          ENV: {
+            name: 'development',
+            apiEndpoint: '',
+            apiKey: ''
+          }
+        }
+      },
+      staging: {
+        options: {
+          dest: '<%= yeoman.app %>/scripts/config.js'
+        },
+        constants: {
+          ENV: {
+            name: 'staging',
+            apiEndpoint: '',
+            apiKey: ''
+          }
+        }
+      },
+      production: {
+        options: {
+          dest: '<%= yeoman.dist %>/scripts/config.js'
+        },
+        constants: {
+          ENV:{
+            name: 'production',
+            apiEndpoint: '',
+            apiKey: ''
+          }
+        }
+      }
+    },
+
+    buildcontrol: {
+      options: {
+        dir: 'dist',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%',
+        branch: 'master'
+      },
+      development: {
+        options: {
+          remote: 'git@heroku.com:{app_name}.git'
+        }
+      },
+      staging: {
+        options: {
+          remote: 'git@heroku.com:{app_name}.git'
+        }
+      },
+      production: {
+        options: {
+          remote: 'git@heroku.com:{app_name}.git'
+        }
+      }
+    },
+
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -391,7 +462,10 @@ module.exports = function (grunt) {
             '*.html',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
-            'fonts/*'
+            'fonts/*',
+            'web.js',
+            'Procfile',
+            'package.json'
           ]
         }, {
           expand: true,
@@ -530,6 +604,11 @@ module.exports = function (grunt) {
     'usemin',
     'htmlmin'
   ]);
+
+  grunt.registerTask('deploy', 'Attempting deployment', function (target) {
+    grunt.task.run(['buildcontrol:' + target]);
+  });
+
 
   grunt.registerTask('default', [
     'newer:jshint',
