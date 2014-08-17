@@ -41,7 +41,7 @@
     "karma-stylus-preprocessor": "0.0.1",<% } %>
     "karma-cli": "0.0.4",
     "karma-phantomjs-launcher": "^0.1.4",
-    "karma-chrome-launcher": "^0.1.4",
+    "karma-chrome-launcher": "^0.1.4"
   },
   "engines": {
     "node": ">=0.10.0"
