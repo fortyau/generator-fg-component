@@ -1,6 +1,6 @@
 {
-  "name": "generator-angular-jade-stylus",
-  "version": "0.8.7",
+  "name": "generator-fortyau-angular-jade-stylus",
+  "version": "0.9.0",
   "description": "Yeoman generator for AngularJS with Jade and Stylus",
   "keywords": [
     "yeoman-generator",
@@ -15,7 +15,7 @@
   ],
   "author": "The Yeoman Team, Chai Yu Pai",
   "main": "app/index.js",
-  "repository": "fantasywind/generator-angular-jade-stylus",
+  "repository": "duanearnett/generator-fortyau-angular-jade-stylus",
   "scripts": {
     "test": "mocha"
   },
