@@ -277,6 +277,7 @@ Generator.prototype.packageFiles = function () {
   this.template('../../templates/common/_server_package.json', 'app/package.json');
   this.template('../../templates/common/_Procfile', 'app/Procfile');
   this.template('../../templates/common/_web.js', 'app/web.js');
+  this.template('../../templates/common/_wercker.yml', 'wercker.yml');
 };
 
 Generator.prototype.imageFiles = function () {
