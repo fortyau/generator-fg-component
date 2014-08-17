@@ -585,25 +585,32 @@ module.exports = function (grunt) {
     'karma'
   ]);
 
-  grunt.registerTask('build', [
-    'clean:dist',
-    'bowerInstall',<% if (jade) { %>
-    'jade:dist',<% } %><% if (coffee) { %>
-    'coffee:dist',<% } %><% if (stylus) { %>
-    'stylus:dist',<% } %>
-    'useminPrepare',
-    'concurrent:dist',
-    'autoprefixer',
-    'concat',
-    'ngmin',
-    'copy:dist',
-    'cdnify',
-    'cssmin',
-    'uglify',
-    'rev',
-    'usemin',
-    'htmlmin'
-  ]);
+  grunt.registerTask('build', function(target){
+    target = target || 'development';
+    grunt.log.warn('Building for environment: ' + target);
+
+    grunt.task.run([
+      'clean:dist',
+      'bowerInstall',
+      'ngconstant:' + target,
+      'ngconstant:'+target,<% if (jade) { %>
+      'jade:dist',<% } %><% if (coffee) { %>
+      'coffee:dist',<% } %><% if (stylus) { %>
+      'stylus:dist',<% } %>
+      'useminPrepare',
+      'concurrent:dist',
+      'autoprefixer',
+      'concat',
+      'ngmin',
+      'copy:dist',
+      'cdnify',
+      'cssmin',
+      'uglify',
+      'rev',
+      'usemin',
+      'htmlmin'
+    ]);
+  });
 
   grunt.registerTask('deploy', 'Attempting deployment', function (target) {
     grunt.task.run(['buildcontrol:' + target]);
