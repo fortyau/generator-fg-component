@@ -275,8 +275,8 @@ Generator.prototype.packageFiles = function () {
   this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
 
   this.template('../../templates/common/_server_package.json', 'app/package.json');
-  this.template('../../templates/common/Procfile', 'app/Procfile');
-  this.template('../../templates/common/web.js', 'app/web.js');
+  this.template('../../templates/common/_Procfile', 'app/Procfile');
+  this.template('../../templates/common/_web.js', 'app/web.js');
 };
 
 Generator.prototype.imageFiles = function () {
