@@ -184,10 +184,10 @@ Generator.prototype.askForUtilities = function askForUtilities() {
 
   this.prompt(prompts, function (props) {
     var hasMod = function (mod) { return props.modules.indexOf(mod) !== -1; };
-    this.underscoreUtil = hasMod('underscoreUtil');
-    this.lodashUtil = hasMod('cookiesModule');
-    this.sanitizeModule = hasMod('sanitizeModule');
-    this.routeModule = hasMod('routeModule');
+    this.underscoreUtil = props.underscoreUtil;
+    this.lodashUtil = props.lodashUtil;
+    this.momentjsUtil = props.momentjsUtil;
+    this.humanizeUtil = props.humanizeUtil;
 
     cb();
   }.bind(this));
