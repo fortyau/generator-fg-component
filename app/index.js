@@ -74,7 +74,7 @@ var Generator = module.exports = function Generator(args, options) {
   this.hookFor('angular-jade-stylus:controller', {
     args: args
   });
-  
+
 
   this.on('end', function () {
     this.installDependencies({
@@ -137,6 +137,7 @@ Generator.prototype.welcome = function welcome() {
   }
 };
 
+
 Generator.prototype.askForBootstrap = function askForBootstrap() {
   var cb = this.async();
 
@@ -151,6 +152,48 @@ Generator.prototype.askForBootstrap = function askForBootstrap() {
     cb();
   }.bind(this));
 };
+
+/**
+ * Decision tree for the generator!
+ */
+Generator.prototype.askForUtilities = function askForUtilities() {
+  var cb = this.async();
+
+  var prompts = [{
+    type: 'checkbox',
+    name: 'utilities',
+    message: 'Which utility scripts would you like to include?',
+    choices: [{
+      value: 'underscoreUtil',
+      name: 'underscorejs',
+      checked: true
+    }, {
+      value: 'lodashUtil',
+      name: 'lodash',
+      checked: false
+    }, {
+      value: 'momentjsUtil',
+      name: 'momentjs',
+      checked: false
+    }, {
+      value: 'humanizeUtil',
+      name: 'humanize-plus',
+      checked: false
+    }]
+  }];
+
+  this.prompt(prompts, function (props) {
+    var hasMod = function (mod) { return props.modules.indexOf(mod) !== -1; };
+    this.underscoreUtil = hasMod('underscoreUtil');
+    this.lodashUtil = hasMod('cookiesModule');
+    this.sanitizeModule = hasMod('sanitizeModule');
+    this.routeModule = hasMod('routeModule');
+
+    cb();
+  }.bind(this));
+};
+
+
 
 Generator.prototype.askForModules = function askForModules() {
   var cb = this.async();
