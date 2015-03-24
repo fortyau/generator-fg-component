@@ -12,7 +12,7 @@
     "angular-sanitize": "1.2.15"<% } %><% if (routeModule) { %>,
     "angular-route": "1.2.15"<% } %><% if (underscoreUtil) { %>,
     "underscore": "~1.8.2"<% } %><% if (lodashUtil) { %>,
-    "lodash": "~3.5.0"<% } %><% if (momentUtil) { %>,
+    "lodash": "~3.5.0"<% } %><% if (momentjsUtil) { %>,
     "moment": "~2.9.0"<% } %><% if (humanizeUtil) { %>,
     "humanize": "~0.0.9"<% } %>
   },

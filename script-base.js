@@ -8,6 +8,11 @@ var angularUtils = require('./util.js');
 var Generator = module.exports = function Generator() {
   yeoman.generators.NamedBase.apply(this, arguments);
 
+  // @duanearnett
+  // Not sure if this is the best way to do this.....?
+  this.options.coffee = true;
+  this.options.stylus = true;
+
   try {
     this.appname = require(path.join(process.cwd(), 'bower.json')).name;
   } catch (e) {
@@ -50,7 +55,7 @@ var Generator = module.exports = function Generator() {
   this.env.options.jade = this.options.jade;
   if (typeof this.env.options.jade === 'undefined') {
     this.option('jade');
-    
+
     // attempt to detect if user is using CS or not
     // if cml arg provided, use that; else look for the existence of cs
     if (!this.options.jade &&
@@ -147,4 +152,3 @@ Generator.prototype.generateSourceAndTest = function (appTemplate, testTemplate,
     this.addScriptToIndex(path.join(targetDirectory, this.name));
   }
 };
-  

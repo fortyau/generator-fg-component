@@ -153,6 +153,7 @@ Generator.prototype.askForBootstrap = function askForBootstrap() {
   }.bind(this));
 };
 
+
 /**
  * Decision tree for the generator!
  */
@@ -208,7 +209,7 @@ Generator.prototype.askForModules = function askForModules() {
       checked: true
     }, {
       value: 'cookiesModule',
-      name: 'angular-cookies.js',
+      name: 'angular-cookie',
       checked: true
     }, {
       value: 'sanitizeModule',
@@ -231,7 +232,7 @@ Generator.prototype.askForModules = function askForModules() {
     var angMods = [];
 
     if (this.cookiesModule) {
-      angMods.push("'ngCookies'");
+      angMods.push("'ipCookie'");
     }
 
     if (this.resourceModule) {
@@ -244,7 +245,6 @@ Generator.prototype.askForModules = function askForModules() {
       angMods.push("'ngRoute'");
       this.env.options.ngRoute = true;
     }
-
     if (angMods.length) {
       this.env.options.angularDeps = '\n    ' + angMods.join(',\n    ') + '\n  ';
     }
