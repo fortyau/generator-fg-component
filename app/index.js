@@ -63,15 +63,15 @@ var Generator = module.exports = function Generator(args, options) {
     this.env.options.jade = this.options.jade;
   }
 
-  this.hookFor('angular-jade-stylus:common', {
+  this.hookFor('fg-component:common', {
     args: args
   });
 
-  this.hookFor('angular-jade-stylus:main', {
+  this.hookFor('fg-component:main', {
     args: args
   });
 
-  this.hookFor('angular-jade-stylus:controller', {
+  this.hookFor('fg-component:controller', {
     args: args
   });
 
@@ -184,11 +184,12 @@ Generator.prototype.askForUtilities = function askForUtilities() {
   }];
 
   this.prompt(prompts, function (props) {
-    var hasMod = function (mod) { return props.modules.indexOf(mod) !== -1; };
-    this.underscoreUtil = props.underscoreUtil;
-    this.lodashUtil = props.lodashUtil;
-    this.momentjsUtil = props.momentjsUtil;
-    this.humanizeUtil = props.humanizeUtil;
+
+    var hasMod = function (mod) { return props.utilities.indexOf(mod) !== -1; };
+    this.underscoreUtil = hasMod('underscoreUtil');
+    this.lodashUtil = hasMod('lodashUtil');
+    this.momentjsUtil = hasMod('momentjsUtil');
+    this.humanizeUtil = hasMod('humanizeUtil');
 
     cb();
   }.bind(this));

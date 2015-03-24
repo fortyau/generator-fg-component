@@ -8,7 +8,7 @@
     "jquery": "~1.11.0",
     "bootstrap": "~3.0.3"<% } %><% if (resourceModule) { %>,
     "angular-resource": "1.2.15"<% } %><% if (cookiesModule) { %>,
-    "angular-cookies": "1.2.15"<% } %><% if (sanitizeModule) { %>,
+    "angular-cookie": "~4.0.6"<% } %><% if (sanitizeModule) { %>,
     "angular-sanitize": "1.2.15"<% } %><% if (routeModule) { %>,
     "angular-route": "1.2.15"<% } %><% if (underscoreUtil) { %>,
     "underscore": "~1.8.2"<% } %><% if (lodashUtil) { %>,
