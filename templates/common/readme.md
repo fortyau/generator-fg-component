@@ -1,12 +1,11 @@
-FG Component: {{component_name}}
-================================
+FG Component: <%= appname %>
+============================
+
+Add a description here
 
 
 Setup
 =====
-
-Add your name to the readme
-Add a description directly under that
 
 Init a git repo, add all of the files, and commit:
 `git init && git add . && git commit -m 'Initial FG Component creation'`

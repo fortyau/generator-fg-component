@@ -317,11 +317,11 @@ Generator.prototype.packageFiles = function () {
   this.template('../../templates/common/_bower.json', 'bower.json');
   this.template('../../templates/common/_package.json', 'package.json');
   this.template('../../templates/common/Gruntfile.js', 'Gruntfile.js');
-
   this.template('../../templates/common/_server_package.json', 'app/package.json');
   this.template('../../templates/common/_Procfile', 'app/Procfile');
   this.template('../../templates/common/_web.js', 'app/web.js');
   this.template('../../templates/common/_wercker.yml', 'wercker.yml');
+  this.template('../../templates/common/readme.md', 'readme.md');
 };
 
 Generator.prototype.imageFiles = function () {

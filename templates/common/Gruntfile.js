@@ -81,17 +81,22 @@ module.exports = function (grunt) {
       },
       development: {
         options: {
-          remote: 'git@heroku.com:{app_name}.git'
+          remote: 'git@heroku.com:{app_name}-development.git'
+        }
+      },
+      qa: {
+        options: {
+          remote: 'git@heroku.com:{app_name}-qa.git'
         }
       },
       staging: {
         options: {
-          remote: 'git@heroku.com:{app_name}.git'
+          remote: 'git@heroku.com:{app_name}-staging.git'
         }
       },
       production: {
         options: {
-          remote: 'git@heroku.com:{app_name}.git'
+          remote: 'git@heroku.com:{app_name}-production.git'
         }
       }
     },
@@ -465,7 +470,8 @@ module.exports = function (grunt) {
             'fonts/*',
             'web.js',
             'Procfile',
-            'package.json'
+            'package.json',
+            'component.js'
           ]
         }, {
           expand: true,
@@ -527,6 +533,30 @@ module.exports = function (grunt) {
     // concat: {
     //   dist: {}
     // },
+
+
+
+
+    // This takes the contents of component.js and swaps out the bits
+    replace: {
+        componentBuild: {
+            src: ['<%%= yeoman.dist %>/component.js'],
+            overwrite: true,
+            replacements: [
+                {
+                    from: '{{app/views/main.html}}',
+                    to: function () {   // callback replacement
+                        var string
+                        string = grunt.file.read('dist/views/main.html');
+                        string = string.replace(/'/g, "\\'");
+                        return string;
+                    }
+                }
+            ]
+        }
+    },
+
+
 
     // Test settings
     karma: {
@@ -608,7 +638,8 @@ module.exports = function (grunt) {
       'uglify',
       'rev',
       'usemin',
-      'htmlmin'
+      'htmlmin',
+      'replace:componentBuild'
     ]);
   });
 
