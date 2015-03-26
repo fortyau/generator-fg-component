@@ -196,6 +196,33 @@ Generator.prototype.askForUtilities = function askForUtilities() {
 };
 
 
+///**
+// * FG Bower components decision tree!
+// */
+//Generator.prototype.askForFGComponents = function askForFGComponents() {
+//  var cb = this.async();
+//
+//  var prompts = [{
+//    type: 'checkbox',
+//    name: 'fg_components',
+//    message: 'Which FG Components would you like to include?',
+//    choices: [{
+//      value: 'fgAuth',
+//      name: 'auth',
+//      checked: true
+//    }]
+//  }];
+//
+//  this.prompt(prompts, function (props) {
+//
+//    var hasMod = function (mod) { return props.fg_components.indexOf(mod) !== -1; };
+//    this.fgAuth = hasMod('fgAuth');
+//
+//    cb();
+//  }.bind(this));
+//};
+
+
 
 Generator.prototype.askForModules = function askForModules() {
   var cb = this.async();
