@@ -542,6 +542,10 @@ module.exports = function (grunt) {
         overwrite: true,
         replacements: [
           {
+            from: '{{url}}',
+            to: "__your_project_url__"
+          },
+          {
             from: '{{config.js}}',
             to: function () {   //callback replacement
               var path = 'dist/scripts/';

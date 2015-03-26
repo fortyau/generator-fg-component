@@ -1,11 +1,10 @@
 // fg-component-injector use:
-// Put this on your page:
-// <script id="script#<%= appname %>Injector" src="{{project/component_url}}/component.js"></script>
-// Then run: `grunt deploy:ENV`
+// Run: `grunt deploy:ENV`
+// Then put this on your page:
+// <script id="script#<%= appname %>Injector" src="{{url}}/component.js"></script>
 
 
 // TODO add coDependant Script...
-
 
 
 // The result of build:js scripts/config.js

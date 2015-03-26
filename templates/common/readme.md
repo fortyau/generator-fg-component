@@ -69,9 +69,15 @@ finally:    `grunt deploy:ENV`
 Ideally this should be `grunt deploy:ENV`
 
 
-Once you choose to deploy a component.js
-file will be modified and updated with your newest code.
-This happens in the grunt script using a replace function
 
-The "template string will use a find and replace searching for '{{app/views/main.html}}'
-The codependant asset loading will be found and replaced using
+Injection
+=========
+
+Say that you need this component on your mindtouch page, you want to use the fg-component-injector (TM)(C)
+The file is created when yo generates the project and is updated on build with your newest code.
+
+### to use the fg-component-injector:
+
+Run: `grunt deploy:ENV`
+Then put this on your page:
+<script id="script#<%= appname %>Injector" src="{{url}}/component.js"></script>
