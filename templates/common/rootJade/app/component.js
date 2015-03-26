@@ -5,6 +5,9 @@
 
 
 // TODO add coDependant Script...
+// Kick it all off.
+loadonater.process_project_dependencies(project_dependencies, <%= appname %>.injector.run);
+
 
 
 // The result of build:js scripts/config.js
