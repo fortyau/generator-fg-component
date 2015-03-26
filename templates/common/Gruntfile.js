@@ -542,7 +542,31 @@ module.exports = function (grunt) {
         overwrite: true,
         replacements: [
           {
-            from: '{{app/views/main.html}}',
+            from: '{{config.js}}',
+            to: function () {   //callback replacement
+              var path = 'dist/scripts/';
+              var file;
+              function recurseCallback(abspath, rootdir, subdir, filename) {
+                if (filename.indexOf("config.js") > -1) {console.log (filename + "match"); file = filename;}
+              }
+              grunt.file.recurse(path, recurseCallback);
+              return grunt.file.read(path + file);
+            }
+          },
+          {
+            from: '{{main.js}}',
+            to: function () {   //callback replacement
+              var path = 'dist/scripts/';
+              var file;
+              function recurseCallback(abspath, rootdir, subdir, filename) {
+                if (filename.indexOf("main.js") > -1) {console.log (filename + "match"); file = filename;}
+              }
+              grunt.file.recurse(path, recurseCallback);
+              return grunt.file.read(path + file);
+            }
+          },
+          {
+            from: '{{main.html}}',
             to: function () {   //callback replacement
               var string
               string = grunt.file.read('dist/views/main.html');
