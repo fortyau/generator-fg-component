@@ -68,3 +68,10 @@ finally:    `grunt deploy:ENV`
 
 Ideally this should be `grunt deploy:ENV`
 
+
+Once you choose to deploy a component.js
+file will be modified and updated with your newest code.
+This happens in the grunt script using a replace function
+
+The "template string will use a find and replace searching for '{{app/views/main.html}}'
+The codependant asset loading will be found and replaced using

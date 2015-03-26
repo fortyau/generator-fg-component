@@ -2,16 +2,16 @@
 var path = require('path');
 var util = require('util');
 var yeoman = require('yeoman-generator');
-
 var angularUtils = require('../util.js');
 
 
 
 var Generator = module.exports = function Generator() {
 
+  // Add some things for the generator to have access to.
   yeoman.generators.Base.apply(this, arguments);
     this.argument('appname', { type: String, required: false });
-    this.appname = this.appname || path.basename(process.cwd());
+    this.appname = path.basename(process.cwd());
     this.appname = this._.camelize(this._.slugify(this._.humanize(this.appname)));
 
     this.option('app-suffix', {
@@ -19,7 +19,11 @@ var Generator = module.exports = function Generator() {
       type: String,
       required: 'false'
     });
+
+    // Set the scriptAppName
     this.scriptAppName = this.appname + angularUtils.appName(this);
+
+
 
 };
 

@@ -535,25 +535,23 @@ module.exports = function (grunt) {
     // },
 
 
-
-
-    // This takes the contents of component.js and swaps out the bits
+    // This takes the contents of component.js and swaps out the bits dynamically
     replace: {
-        componentBuild: {
-            src: ['<%%= yeoman.dist %>/component.js'],
-            overwrite: true,
-            replacements: [
-                {
-                    from: '{{app/views/main.html}}',
-                    to: function () {   // callback replacement
-                        var string
-                        string = grunt.file.read('dist/views/main.html');
-                        string = string.replace(/'/g, "\\'");
-                        return string;
-                    }
-                }
-            ]
-        }
+      componentBuild: {
+        src: ['<%%= yeoman.dist %>/component.js'],
+        overwrite: true,
+        replacements: [
+          {
+            from: '{{app/views/main.html}}',
+            to: function () {   //callback replacement
+              var string
+              string = grunt.file.read('dist/views/main.html');
+              string = string.replace(/'/g, "\\'");
+              return string;
+            }
+          }
+        ]
+      }
     },
 
 
