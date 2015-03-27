@@ -553,13 +553,13 @@ module.exports = function (grunt) {
         src: ['<%%= yeoman.dist %>/componentize.js'],
         overwrite: true,
         replacements: [
-          {
+          { // replace the placeholder init "block" with one that has real code. we use the contents of componentize-app.js, this will be called with the callback below
             from: '//{{init_script}}',
             to: function () {   //callback replacement
               return grunt.file.read('dist/componentize-app.js');
             }
           },
-          {
+          { // Take the default init and replace it with one that has a callback, it will call the injector run function from above
             from: '<%%= yeoman.scriptAppName %>.loadonater.process_project_dependencies(<%%= yeoman.scriptAppName %>.dependencies);',
             to:   '<%%= yeoman.scriptAppName %>.loadonater.process_project_dependencies(<%%= yeoman.scriptAppName %>.dependencies); <%%= yeoman.scriptAppName %>.injector.run )'
           },
@@ -584,31 +584,6 @@ module.exports = function (grunt) {
               return string;
             }
           }
-//        ,
-//          {
-//            from: '{{config.js}}',
-//            to: function () {   //callback replacement
-//              var path = 'dist/scripts/';
-//              var file;
-//              function recurseCallback(abspath, rootdir, subdir, filename) {
-//                if (filename.indexOf("config.js") > -1) {console.log (filename + "match"); file = filename;}
-//              }
-//              grunt.file.recurse(path, recurseCallback);
-//              return grunt.file.read(path + file);
-//            }
-//          },
-//          {
-//            from: '{{main.js}}',
-//            to: function () {   //callback replacement
-//              var path = 'dist/scripts/';
-//              var file;
-//              function recurseCallback(abspath, rootdir, subdir, filename) {
-//                if (filename.indexOf("main.js") > -1) {console.log (filename + "match"); file = filename;}
-//              }
-//              grunt.file.recurse(path, recurseCallback);
-//              return grunt.file.read(path + file);
-//            }
-//          }
         ]
       }
     },
