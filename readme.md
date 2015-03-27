@@ -1,6 +1,25 @@
-# AngularJS generator with Jade and Stylus 
+# generator-fg-component
 
 > Yeoman generator for AngularJS - lets you quickly set up a project with sensible defaults and best practises.
+
+
+Running
+=======
+
+Run and optionally pass an app name:
+`yo fg-component --coffee --jade --stylus [app-name]`
+
+
+TODO
+====
+## Get the generator to default to coffee jade and stylus reliably
+## Update the Readme
+
+
+
+-------------------------------------
+
+
 
 
 ## Usage

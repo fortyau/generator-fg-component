@@ -473,7 +473,7 @@ module.exports = function (grunt) {
             'web.js',
             'Procfile',
             'package.json',
-            'component.js'
+            'componentize-app.js'
           ]
         }, {
           expand: true,
@@ -513,36 +513,36 @@ module.exports = function (grunt) {
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
     // minification. These next options are pre-configured if you do not wish
     // to use the Usemin blocks.
-    cssmin: {
-       dist: {
-         files: {
-           '<%%= yeoman.dist %>/styles/main.css': [
-             '.tmp/styles/{,*/}*.css',
-             '<%%= yeoman.app %>/styles/{,*/}*.css'
-           ]
-         }
-       }
-    },
-    uglify: {
-       dist: {
-         files: {
-           '<%%= yeoman.dist %>/scripts/scripts.js': [
-             '<%%= yeoman.dist %>/scripts/scripts.js'
-           ]
-         }
-       }
-    },
-    concat: {
-       dist: {}
-    },
+//    cssmin: {
+//       dist: {
+//         files: {
+//           '<%%= yeoman.dist %>/styles/main.css': [
+//             '.tmp/styles/{,*/}*.css',
+//             '<%%= yeoman.app %>/styles/{,*/}*.css'
+//           ]
+//         }
+//       }
+//    },
+//    uglify: {
+//       dist: {
+//         files: {
+//           '<%%= yeoman.dist %>/scripts/scripts.js': [
+//             '<%%= yeoman.dist %>/scripts/scripts.js'
+//           ]
+//         }
+//       }
+//    },
+//    concat: {
+//       dist: {}
+//    },
 
 
     componentize: {
       default_options:{
         options: {
-          dest: '<%= yeoman.dist %>/componentize.js',
-          name: 'test',
-          app_name: 'testApp'
+          dest: '<%%= yeoman.dist %>/componentize.js',
+          name: '<%%= yeoman.appname %>',
+          app_name: '<%%= yeoman.scriptAppName %>'
         }
       }
     },
@@ -554,12 +554,26 @@ module.exports = function (grunt) {
         overwrite: true,
         replacements: [
           {
-            from: '{{appname}}',
-            to: '<%%= yeoman.app %>'
+            from: '//{{init_script}}',
+            to: function () {   //callback replacement
+              return grunt.file.read('dist/componentize-app.js');
+            }
+          },
+          {
+            from: '<%%= yeoman.scriptAppName %>.loadonater.process_project_dependencies(<%%= yeoman.scriptAppName %>.dependencies);',
+            to:   '<%%= yeoman.scriptAppName %>.loadonater.process_project_dependencies(<%%= yeoman.scriptAppName %>.dependencies); <%%= yeoman.scriptAppName %>.injector.run )'
           },
           {
             from: '{{url}}',
-            to: '<%%= yeoman.app %>'
+            to: '<%%= distUrl %>'
+          },
+          {
+            from: '{{appname}}',
+            to: '<%%= yeoman.appname %>'
+          },
+          {
+            from: '{{scriptAppName}}',
+            to: '<%%= yeoman.scriptAppName %>'
           },
           {
             from: '{{main.html}}',
@@ -570,36 +584,31 @@ module.exports = function (grunt) {
               return string;
             }
           }
-        ]
-      },
-      componentize-app: {
-        src: ['<%%= yeoman.dist %>/componentize-app.js'],
-        overwrite: true,
-        replacements: [
-          {
-            from: '{{config.js}}',
-            to: function () {   //callback replacement
-              var path = 'dist/scripts/';
-              var file;
-              function recurseCallback(abspath, rootdir, subdir, filename) {
-                if (filename.indexOf("config.js") > -1) {console.log (filename + "match"); file = filename;}
-              }
-              grunt.file.recurse(path, recurseCallback);
-              return grunt.file.read(path + file);
-            }
-          },
-          {
-            from: '{{main.js}}',
-            to: function () {   //callback replacement
-              var path = 'dist/scripts/';
-              var file;
-              function recurseCallback(abspath, rootdir, subdir, filename) {
-                if (filename.indexOf("main.js") > -1) {console.log (filename + "match"); file = filename;}
-              }
-              grunt.file.recurse(path, recurseCallback);
-              return grunt.file.read(path + file);
-            }
-          }
+//        ,
+//          {
+//            from: '{{config.js}}',
+//            to: function () {   //callback replacement
+//              var path = 'dist/scripts/';
+//              var file;
+//              function recurseCallback(abspath, rootdir, subdir, filename) {
+//                if (filename.indexOf("config.js") > -1) {console.log (filename + "match"); file = filename;}
+//              }
+//              grunt.file.recurse(path, recurseCallback);
+//              return grunt.file.read(path + file);
+//            }
+//          },
+//          {
+//            from: '{{main.js}}',
+//            to: function () {   //callback replacement
+//              var path = 'dist/scripts/';
+//              var file;
+//              function recurseCallback(abspath, rootdir, subdir, filename) {
+//                if (filename.indexOf("main.js") > -1) {console.log (filename + "match"); file = filename;}
+//              }
+//              grunt.file.recurse(path, recurseCallback);
+//              return grunt.file.read(path + file);
+//            }
+//          }
         ]
       }
     },
@@ -688,9 +697,8 @@ module.exports = function (grunt) {
       'usemin',
       'htmlmin',
       'componentize',
-      'replace:componentize',
-      'replace:componentize-app'
-    ]);
+      'replace:componentize'
+     ]);
   });
 
   grunt.registerTask('deploy', 'Attempting deployment', function (target) {
