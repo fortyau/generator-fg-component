@@ -80,4 +80,4 @@ The file is created when yo generates the project and is updated on build with y
 
 Run: `grunt deploy:ENV`
 Then put this on your page:
-<script id="script#<%= appname %>Injector" src="{{url}}/component.js"></script>
+<script id="script#<%= appname %>Injector" src="{{url}}/componentize-app.js"></script>

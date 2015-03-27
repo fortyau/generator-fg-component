@@ -24,7 +24,6 @@ var Generator = module.exports = function Generator() {
     this.scriptAppName = this.appname + angularUtils.appName(this);
 
 
-
 };
 
 util.inherits(Generator, yeoman.generators.Base);
