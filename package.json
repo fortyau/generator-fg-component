@@ -1,6 +1,6 @@
 {
   "name": "generator-fg-component",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "description": "Yeoman generator for AngularJS with Jade and Stylus",
   "keywords": [
     "yeoman-generator",
