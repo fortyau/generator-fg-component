@@ -561,7 +561,7 @@ module.exports = function (grunt) {
           },
           { // Take the default init and replace it with one that has a callback, it will call the injector run function from above
             from: '<%%= yeoman.scriptAppName %>.loadonater.process_project_dependencies(<%%= yeoman.scriptAppName %>.dependencies);',
-            to:   '<%%= yeoman.scriptAppName %>.loadonater.process_project_dependencies(<%%= yeoman.scriptAppName %>.dependencies); <%%= yeoman.scriptAppName %>.injector.run )'
+            to:   '<%%= yeoman.scriptAppName %>.loadonater.process_project_dependencies(<%%= yeoman.scriptAppName %>.dependencies, <%%= yeoman.scriptAppName %>.injector.run );'
           },
           {
             from: '{{url}}',
