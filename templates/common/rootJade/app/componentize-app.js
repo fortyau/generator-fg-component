@@ -17,7 +17,7 @@
 // then it should be ready for you to call
 
 
-{{scriptAppName}}.injector: {
+{{scriptAppName}}.injector = {
     template: '<div ng-app="{{scriptAppName}}" id="ng-app">{{main.html}}</div>',
 
     run: function(){
