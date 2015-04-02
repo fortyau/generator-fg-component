@@ -21,6 +21,11 @@ var Generator = module.exports = function Generator(args, options) {
   });
   this.scriptAppName = this.appname + angularUtils.appName(this);
 
+  // Override some defaults
+  this.options.stylus = true
+  this.options.jade = true
+  this.options.coffee = true
+
   args = ['main'];
 
   if (typeof this.env.options.appPath === 'undefined') {
@@ -41,7 +46,6 @@ var Generator = module.exports = function Generator(args, options) {
     // if cml arg provided, use that; else look for the existence of cs
     if (!this.options.coffee &&
       this.expandFiles(path.join(this.appPath, '/scripts/**/*.coffee'), {}).length > 0) {
-      this.options.coffee = true;
     }
 
     this.env.options.coffee = this.options.coffee;
