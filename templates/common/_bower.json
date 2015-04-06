@@ -6,6 +6,7 @@
     "json3": "~3.2.6",
     "es5-shim": "~2.1.0"<% if (bootstrap) { %>,
     "jquery": "~1.11.0",
+    "angular-fg-authenticate": "git@74.217.67.111:/home/git/repositories/fg-auth",
     "bootstrap": "~3.0.3"<% } %><% if (resourceModule) { %>,
     "angular-resource": "1.2.15"<% } %><% if (cookiesModule) { %>,
     "angular-cookie": "~4.0.6"<% } %><% if (sanitizeModule) { %>,

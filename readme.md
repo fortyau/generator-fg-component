@@ -34,12 +34,31 @@ Make a new directory, and `cd` into it:
 mkdir my-new-project && cd $_
 ```
 
-Run `yo angular`, optionally passing an app name:
-```
-yo angular-jade-stylus --coffee --jade --stylus [app-name]
-```
+If you are creating this project on a mac:
+`touch .bowerrc`
+`tocuh .gitconfig`
 
-> You should add --jade and --stylus to enable jade / stylus template
+
+Then place in these files
+
+.bowerrc
+{
+    "directory": "app/bower_components",
+    "proxy": "http://127.0.0.1:3128",
+    "http_proxy": "http://127.0.0.1:3128"
+}
+
+.gitconfig
+[http]
+  proxy = 127.0.0.1:3128
+[https]
+  proxy = 127.0.0.1:3128
+
+
+Run `yo fg-component`
+
+if you manually added bower rc and gitconfig you will be prompted to override the contents of these files. Do not do so.
+
 
 Run `grunt` for building and `grunt serve` for preview
 
