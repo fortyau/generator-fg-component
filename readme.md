@@ -3,44 +3,37 @@
 > Yeoman generator for AngularJS - lets you quickly set up a project with sensible defaults and best practises.
 
 
-Running
-=======
+THE GENERATOR
+=============
 
 Run and optionally pass an app name:
-`yo fg-component --coffee --jade --stylus [app-name]`
-
-
-TODO
-====
-## Get the generator to default to coffee jade and stylus reliably
-## Update the Readme
+`yo fg-component [app-name]`
 
 
 
--------------------------------------
+Usage
+=====
+
+
+Install the generator. Ask someone where you can get it from.
+
+`npm install -g generator-angular-jade-stylus`
+
+Make a new directory, and navagate into it:
+
+`mkdir my-new-project && cd $_`
 
 
 
 
-## Usage
-
-Install `generator-angular`:
-```
-npm install -g generator-angular-jade-stylus
-```
-
-Make a new directory, and `cd` into it:
-```
-mkdir my-new-project && cd $_
-```
-
-If you are creating this project on a mac:
-`touch .bowerrc`
-`tocuh .gitconfig`
+### More steps for us on a mac
 
 
-Then place in these files
+Find and follow the instructions in:
+Connecting to HCA proxies via cntlm on OSX
 
+This includes
+making these files and filling them with this content:
 .bowerrc
 {
     "directory": "app/bower_components",
@@ -54,14 +47,46 @@ Then place in these files
 [https]
   proxy = 127.0.0.1:3128
 
+** Later in the setup you will be prompted to override the contents of these files. Do not do so.
+
+
+Connect HCA to the Juniper remote service.
+
+
+    NOW if you have a screwy computer that ignores all of these proxy settings, I am looking at you christopher
+    You need to manually set all of the proxys in each of the terminal window instance that you want to use.
+    Because git and bower for some reason dont care to share these settings that you just added.
+
+    So anytime you need to bower do this:
+    `  PROXY=http://127.0.0.1:3128
+       HTTP_PROXY=$PROXY
+       HTTPS_PROXY=$PROXY
+       http_proxy=$PROXY
+       https_proxy=$PROXY `
+
+     You can alias it to a setProxy function for ease of use.
+
+
+
+Then, follow the instructions as normal.
+
+
+
+
+### Continue the steps for everyone
 
 Run `yo fg-component`
 
-if you manually added bower rc and gitconfig you will be prompted to override the contents of these files. Do not do so.
-
+Select your options and go to town
 
 Run `grunt` for building and `grunt serve` for preview
 
+Read the generated readme for directions for embedding your component.
+
+
+------------------------------------------------------------------------------------------------------------------------
+This is the end of the FG-Component generator readme
+------------------------------------------------------------------------------------------------------------------------
 
 ## Generators
 
