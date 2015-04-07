@@ -36,9 +36,10 @@ This includes
 making these files and filling them with this content:
 .bowerrc
 {
-    "directory": "app/bower_components",
-    "proxy": "http://127.0.0.1:3128",
-    "http_proxy": "http://127.0.0.1:3128"
+    "directory": "app/bower_components",
+    "proxy": "http://127.0.0.1:3128",
+    "http-proxy": "http://127.0.0.1:3128",
+    "https-proxy": "http://127.0.0.1:3128"
 }
 
 .gitconfig
