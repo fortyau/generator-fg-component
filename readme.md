@@ -26,58 +26,22 @@ Make a new directory, and navagate into it:
 
 
 
-### More steps for us on a mac
+If you are generating this on a mac
 
 
 Find and follow the instructions in:
 Connecting to HCA proxies via cntlm on OSX
 
-This includes
-making these files and filling them with this content:
-.bowerrc
-{
-    "directory": "app/bower_components",
-    "proxy": "http://127.0.0.1:3128",
-    "http_proxy": "http://127.0.0.1:3128"
-}
+Start using `cntlm -v`
 
-.gitconfig
-[http]
-  proxy = 127.0.0.1:3128
-[https]
-  proxy = 127.0.0.1:3128
-
-** Later in the setup you will be prompted to override the contents of these files. Do not do so.
+Then Connect HCA to the Juniper remote service.
 
 
-Connect HCA to the Juniper remote service.
-
-
-    NOW if you have a screwy computer that ignores all of these proxy settings, I am looking at you christopher
-    You need to manually set all of the proxys in each of the terminal window instance that you want to use.
-    Because git and bower for some reason dont care to share these settings that you just added.
-
-    So anytime you need to bower do this:
-    `  PROXY=http://127.0.0.1:3128
-       HTTP_PROXY=$PROXY
-       HTTPS_PROXY=$PROXY
-       http_proxy=$PROXY
-       https_proxy=$PROXY `
-
-     You can alias it to a setProxy function for ease of use.
-
-
-
-Then, follow the instructions as normal.
-
-
-
-
-### Continue the steps for everyone
 
 Run `yo fg-component`
 
 Select your options and go to town
+* If on a mac be sure to select the cntlm config generation option
 
 Run `grunt` for building and `grunt serve` for preview
 
